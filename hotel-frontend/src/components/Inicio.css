@@ -1,0 +1,131 @@
+/* Estilos generales */
+.inicio-container {
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* ENCABEZADO */
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    padding: 1rem 2rem;
+    border-bottom: 2px solid #ccc;
+  }
+  
+  .logo {
+    height: 60px;
+  }
+  
+  .titulo {
+    font-size: 2rem;
+    color: #2c3e50;
+  }
+  
+  .nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .nav a:hover {
+    text-decoration: underline;
+  }
+  
+  /* QUIÉNES SOMOS */
+  .quienes-somos {
+    text-align: center;
+    margin: 3rem 0;
+  }
+  
+  .quienes-somos h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .quienes-somos p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* SERVICIOS */
+  .titulo-servicios {
+    text-align: center;
+    font-size: 2rem;
+    color: #2c3e50;
+    margin: 2rem 0 1rem;
+  }
+  
+  .container-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem;
+  }
+  
+  .card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .card figure img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .contenido-card {
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .contenido-card h3 {
+    color: #34495e;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contenido-card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 1rem;
+  }
+  
+  .contenido-card a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  /* UBICACIÓN */
+  .ubicacion {
+    text-align: center;
+    margin: 4rem 0;
+  }
+  
+  .ubicacion h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* PIE DE PÁGINA */
+  .footer {
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+    border-top: 2px solid #ccc;
+  }
+  
+  
