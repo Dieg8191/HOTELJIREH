@@ -11,6 +11,7 @@ export const obtenerHabitacion = (id) => axios.get(`${API_URL}/${id}`);
 
 // Función para crear una nueva habitación
 const crearHabitacion = (habitacion) => axios.post(API_URL, habitacion);
+
 export default crearHabitacion;
 
 // Función para actualizar una habitación existente

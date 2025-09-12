@@ -1,5 +1,8 @@
 package com.hotel.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,16 +15,29 @@ public class Usuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String username;
+    @JsonIgnore
     private String password;
+
+    boolean isAdmin;
 
     // Constructores
     public Usuario() {
     }
 
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    public boolean getIsAdmin() {
+        return isAdmin;
+    }
+
     public Usuario(String username, String password) {
         this.username = username;
         this.password = password;
+        isAdmin = false;
     }
 
     // Getters y Setters

@@ -16,7 +16,19 @@ const CrearHabitacion = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await crearHabitacion(habitacion);
+
+    try {
+      await crearHabitacion(habitacion);
+    } catch (e) {
+      console.error("No se pudo crear la habitación: ", e.response?.data || e.menssage);
+      if (e.response && e.response.data && e.response.data.message?.includes("Data too long for column 'imagen_url'")) {
+        alert("La URL de la habitación es demasiado larga");
+      } else {
+        alert("No se pudo crear la habitación: Revisa los datos")
+      }
+      return
+    }
+
     alert("Habitación creada con éxito");
     setHabitacion({ tipo: "", descripcion: "", precioPorNoche: "", capacidad: "", imagenUrl: "" });
   };

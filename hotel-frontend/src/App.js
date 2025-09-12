@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import { Route, Routes, Link, useLocation } from 'react-router-dom'; 
+import { Route, Routes, Link, useLocation } from 'react-router-dom';
 import './App.css';
-import axios from 'axios';
+import NewUser from './components/newUser';
 import fondo from './assets/fondo.jpg';
 import logo from './assets/logo.avif';
 import Inicio from './components/Inicio';
 import Habitaciones from './components/Habitaciones';
 import Servicios from './components/Servicios';
 import Contacto from './components/Contacto';
-import { useNavigate } from 'react-router-dom'; 
-import Admin from './admin'; 
+import Cart from './components/cart';
+import { useNavigate } from 'react-router-dom';
+import Admin from './admin';
 import FormularioReserva from './components/FormularioReserva';
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   const [reserva, setReserva] = useState(false);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [cart, setCart] = useState('');
   const location = useLocation();
   const navigate = useNavigate(); // IMPORTANTE
 
@@ -24,6 +26,10 @@ function App() {
   const clic = () => {
     setFormulario(!formulario);
   };
+
+  const clickCart = () => {
+    navigate("/cart");
+  }
 
   const clic2 = () => {
     setReserva(!reserva);
@@ -38,12 +44,13 @@ function App() {
         },
         body: JSON.stringify({ username, password })
       });
+      const data = await response.json()
 
       if (response.ok) {
         alert('Login exitoso');
-        window.open('/admin', '_blank'); 
+        window.open('/admin', '_blank');
       } else {
-        alert('Error al iniciar sesión');
+        alert('Error al iniciar sesión: ' + data.message);
       }
     } catch (error) {
       console.error('Error:', error);
@@ -102,6 +109,10 @@ function App() {
               </li>
             </ul>
 
+            <div onClick={clickCart}>
+              <label type='button' className='user-icon ms-3'>🛒</label>
+            </div>
+
             <div className="user-icon ms-3" onClick={clic}>
               👤
             </div>
@@ -149,6 +160,8 @@ function App() {
         <Route path="/habitaciones" element={<Habitaciones />} />
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/registrarse" element={<NewUser />} />
         <Route path="/admin/*" element={<Admin />} />
       </Routes>
 

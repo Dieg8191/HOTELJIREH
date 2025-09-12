@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.hotel.demo.model.habitacion;
-import com.hotel.demo.model.reservacion;
+import com.hotel.demo.model.Habitacion;
+import com.hotel.demo.model.Reservacion;
 import com.hotel.demo.repository.habitacionrespository;
 import com.hotel.demo.repository.reservarepository;
 
@@ -20,20 +20,20 @@ public class habitacionservice {
     @Autowired
     private reservarepository reservaRepository;
 
-    public List<habitacion> obtenerTodasLasHabitaciones() {
+    public List<Habitacion> obtenerTodasLasHabitaciones() {
         return habitacionRepository.findAll();
     }
 
-    public habitacion obtenerHabitacionPorId(Long id) {
+    public Habitacion obtenerHabitacionPorId(Long id) {
         return habitacionRepository.findById(id).orElse(null);
     }
 
-    public habitacion crearHabitacion(habitacion habitacion) {
+    public Habitacion crearHabitacion(Habitacion habitacion) {
         return habitacionRepository.save(habitacion);
     }
 
-    public habitacion actualizarHabitacion(Long id, habitacion habitacionActualizada) {
-        habitacion habitacionExistente = habitacionRepository.findById(id).orElse(null);
+    public Habitacion actualizarHabitacion(Long id, Habitacion habitacionActualizada) {
+        Habitacion habitacionExistente = habitacionRepository.findById(id).orElse(null);
         if (habitacionExistente == null) {
             return null;
         }
@@ -44,12 +44,12 @@ public class habitacionservice {
         habitacionExistente.setCapacidad(habitacionActualizada.getCapacidad());
         habitacionExistente.setImagenUrl(habitacionActualizada.getImagenUrl());
 
-        habitacion habitacionGuardada = habitacionRepository.save(habitacionExistente);
+        Habitacion habitacionGuardada = habitacionRepository.save(habitacionExistente);
 
         //ACTUALIZAR LAS RESERVAS QUE TIENEN ESTA HABITACIÓN
-        List<reservacion> reservas = reservaRepository.findAll();
+        List<Reservacion> reservas = reservaRepository.findAll();
 
-        for (reservacion reserva : reservas) {
+        for (Reservacion reserva : reservas) {
             boolean contiene = reserva.getHabitaciones().stream()
                 .anyMatch(h -> h.getId().equals(id));
 
@@ -58,8 +58,8 @@ public class habitacionservice {
                 long dias = ChronoUnit.DAYS.between(reserva.getFechaLlegada(), reserva.getFechaSalida());
 
                 double nuevoTotal = 0.0;
-                for (habitacion h : reserva.getHabitaciones()) {
-                    habitacion actual = habitacionRepository.findById(h.getId()).orElse(null);
+                for (Habitacion h : reserva.getHabitaciones()) {
+                    Habitacion actual = habitacionRepository.findById(h.getId()).orElse(null);
                     if (actual != null) {
                         nuevoTotal += actual.getPrecioPorNoche() * dias;
                     }

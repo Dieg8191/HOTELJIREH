@@ -2,7 +2,7 @@ package com.hotel.demo.model;
 import jakarta.persistence.*;
 
 @Entity
-public class servicios {
+public class Servicios {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

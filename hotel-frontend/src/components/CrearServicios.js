@@ -20,8 +20,11 @@ const CrearServicios = () => {
       alert("Servicio creado con éxito");
       setServicio({ nombre: "", descripcion: "", imagenUrl: "" }); // Resetea el formulario
     } catch (error) {
-      // Si ocurre un error, mostramos un mensaje de alerta
-      alert("Error al crear el servicio. Intenta nuevamente.");
+      if (e.response && e.response.data && e.response.data.message?.includes("Data too long for column'")) {
+        alert("La URL de la habitación es demasiado larga");
+      } else {
+        alert("No se pudo crear la habitación: Revisa los datos")
+      }
     }
   };
 

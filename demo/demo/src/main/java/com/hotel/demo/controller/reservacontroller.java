@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.hotel.demo.model.reservacion;
+import com.hotel.demo.model.Reservacion;
 import com.hotel.demo.service.reservasrvice;
 
 @RestController
@@ -15,22 +15,22 @@ public class reservacontroller {
     private reservasrvice reservaService;
 
     @GetMapping
-    public List<reservacion> listarReservas() {
+    public List<Reservacion> listarReservas() {
         return reservaService.obtenerTodas();
     }
 
     @GetMapping("/{id}")
-    public reservacion obtenerReserva(@PathVariable Long id) {
+    public Reservacion obtenerReserva(@PathVariable Long id) {
         return reservaService.obtenerPorId(id);
     }
 
     @PostMapping
-    public reservacion crearReserva(@RequestBody reservacion reserva) {
+    public Reservacion crearReserva(@RequestBody Reservacion reserva) {
         return reservaService.crearReserva(reserva);
     }
 
     @PutMapping("/{id}")
-    public reservacion actualizarReserva(@PathVariable Long id, @RequestBody reservacion reserva) {
+    public Reservacion actualizarReserva(@PathVariable Long id, @RequestBody Reservacion reserva) {
         return reservaService.actualizarReserva(id, reserva);
     }
 
