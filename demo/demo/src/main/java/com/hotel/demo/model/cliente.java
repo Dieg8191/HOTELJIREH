@@ -18,6 +18,14 @@ public class Cliente {
     @OneToOne
     private Usuario usuario;
 
+    public Cliente(String nombre, String correo, String direccion, String celular, Usuario usuario) {
+        this.nombreCompleto = nombre;
+        this.correo = correo;
+        this.direccion = direccion;
+        this.celular = celular;
+        this.usuario = usuario;
+    }
+
      // Getters y Setters
     public Long getId() {
         return id;

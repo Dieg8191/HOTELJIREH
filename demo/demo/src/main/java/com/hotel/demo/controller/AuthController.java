@@ -1,16 +1,21 @@
 package com.hotel.demo.controller;
 
+import com.hotel.demo.dto.LoginForm;
+import com.hotel.demo.dto.UsuarioForm;
+import com.hotel.demo.model.Cliente;
+import com.hotel.demo.model.Usuario;
+import com.hotel.demo.repository.UsuarioRepository;
+import com.hotel.demo.repository.clienterepository;
+import com.hotel.demo.service.UsuarioServicio;
+
 import java.util.HashMap;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
-import com.hotel.demo.model.Usuario;
-import com.hotel.demo.repository.UsuarioRepository;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -21,14 +26,39 @@ public class AuthController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    UsuarioServicio usuarioServicio;
+    @Autowired
+    clienterepository clienterepository;
 
     @PostMapping("/register")
-    public String register(@RequestBody Usuario newUser) {
-        return "";
+    public ResponseEntity<Map<String, Object>> register(@RequestBody UsuarioForm form) {
+        Usuario usernameExist = usuarioRepository.findByUsername(form.getUsername());
+
+        if (usernameExist != null) {
+            return ResponseEntity
+            .status(HttpStatus.CONFLICT).body(Map.of("message", "El Usuario \"" + form.getUsername() + "\" ya existe"));
+        }
+
+        Usuario usuario = new Usuario(form.getUsername(), form.getPassword());
+        usuarioServicio.registrarUsuario(usuario);
+
+        Cliente cliente = new Cliente(
+            form.getNombre(),
+            form.getCorreo(),
+            form.getDireccion(),
+            form.getCelular(),
+            usuario
+        );
+        clienterepository.save(cliente);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(Map.of("message", "Usuario creado"));
     }
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, Object>> login(@RequestBody Usuario loginRequest) {
+    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginForm loginRequest) {
+        System.out.println(loginRequest.getPassword() +",gola " + loginRequest.getUsername());
+
         Usuario usuario = usuarioRepository.findByUsername(loginRequest.getUsername());
         String inputPassword = loginRequest.getPassword();
         
