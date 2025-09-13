@@ -1,19 +1,17 @@
 package com.hotel.demo.controller;
 
-import org.springframework.web.bind.annotation.*;
-
 import com.hotel.demo.model.Servicios;
-import com.hotel.demo.service.servicioservice;
-
+import com.hotel.demo.service.ServicioService;
 import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/servicios")
-public class servicioscontroller {
+public class ServiciosController {
 
-    private final servicioservice servicioService;
+    private final ServicioService servicioService;
 
-    public servicioscontroller(servicioservice servicioService) {
+    public ServiciosController(ServicioService servicioService) {
         this.servicioService = servicioService;
     }
 

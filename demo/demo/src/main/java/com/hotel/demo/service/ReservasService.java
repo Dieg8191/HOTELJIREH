@@ -10,18 +10,18 @@ import org.springframework.stereotype.Service;
 
 import com.hotel.demo.model.Habitacion;
 import com.hotel.demo.model.Reservacion;
-import com.hotel.demo.repository.habitacionrespository;
-import com.hotel.demo.repository.reservarepository;
+import com.hotel.demo.repository.HabitacionRespository;
+import com.hotel.demo.repository.ReservaRepository;
 
 @Service
-public class reservasrvice {
+public class ReservasService {
 
     @Autowired
-    private reservarepository reservaRepository;
+    private ReservaRepository reservaRepository;
     @Autowired
-    private habitacionrespository habitacionRepository;
+    private HabitacionRespository habitacionRepository;
 
-    public reservasrvice(reservarepository reservaRepository) {
+    public ReservasService(ReservaRepository reservaRepository) {
         this.reservaRepository = reservaRepository;
     }
 

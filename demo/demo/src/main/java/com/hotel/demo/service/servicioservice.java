@@ -6,14 +6,14 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.hotel.demo.model.Servicios;
-import com.hotel.demo.repository.serviciosrepository;
+import com.hotel.demo.repository.ServiciosRepository;
 
 @Service
-public class servicioservice {
+public class ServicioService {
 
-    private final serviciosrepository servicioRepository;
+    private final ServiciosRepository servicioRepository;
 
-    public servicioservice(serviciosrepository servicioRepository) {
+    public ServicioService(ServiciosRepository servicioRepository) {
         this.servicioRepository = servicioRepository;
     }
 

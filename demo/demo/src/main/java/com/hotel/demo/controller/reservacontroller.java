@@ -5,14 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.hotel.demo.model.Reservacion;
-import com.hotel.demo.service.reservasrvice;
+import com.hotel.demo.service.ReservasService;
 
 @RestController
 @RequestMapping("/api/reservas")
-public class reservacontroller {
+public class ReservaController {
 
     @Autowired
-    private reservasrvice reservaService;
+    private ReservasService reservaService;
 
     @GetMapping
     public List<Reservacion> listarReservas() {

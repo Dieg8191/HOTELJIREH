@@ -7,6 +7,6 @@ import com.hotel.demo.model.Reservacion;
 
 @Repository
 
-public interface reservarepository extends JpaRepository<Reservacion, Long> {
+public interface ReservaRepository extends JpaRepository<Reservacion, Long> {
     boolean existsByHabitaciones_Id(Long idHabitacion);
 }

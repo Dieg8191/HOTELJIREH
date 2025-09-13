@@ -5,7 +5,7 @@ import com.hotel.demo.dto.UsuarioForm;
 import com.hotel.demo.model.Cliente;
 import com.hotel.demo.model.Usuario;
 import com.hotel.demo.repository.UsuarioRepository;
-import com.hotel.demo.repository.clienterepository;
+import com.hotel.demo.repository.ClienteRepository;
 import com.hotel.demo.service.UsuarioServicio;
 
 import java.util.HashMap;
@@ -29,7 +29,7 @@ public class AuthController {
     @Autowired
     UsuarioServicio usuarioServicio;
     @Autowired
-    clienterepository clienterepository;
+    ClienteRepository clienterepository;
 
     @PostMapping("/register")
     public ResponseEntity<Map<String, Object>> register(@RequestBody UsuarioForm form) {

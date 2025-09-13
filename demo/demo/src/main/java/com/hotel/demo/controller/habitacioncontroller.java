@@ -3,7 +3,7 @@ package com.hotel.demo.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hotel.demo.model.Habitacion;
-import com.hotel.demo.service.habitacionservice;
+import com.hotel.demo.service.HabitacionService;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,10 +20,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/api/habitaciones")
-public class habitacioncontroller {
+public class HabitacionController {
 
     @Autowired
-    private habitacionservice habitacionService;
+    private HabitacionService habitacionService;
 
     @GetMapping
     public List<Habitacion> listarHabitaciones() {

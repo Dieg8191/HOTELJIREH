@@ -8,17 +8,17 @@ import org.springframework.stereotype.Service;
 
 import com.hotel.demo.model.Habitacion;
 import com.hotel.demo.model.Reservacion;
-import com.hotel.demo.repository.habitacionrespository;
-import com.hotel.demo.repository.reservarepository;
+import com.hotel.demo.repository.HabitacionRespository;
+import com.hotel.demo.repository.ReservaRepository;
 
 @Service
-public class habitacionservice {
+public class HabitacionService {
 
     @Autowired
-    private habitacionrespository habitacionRepository;
+    private HabitacionRespository habitacionRepository;
 
     @Autowired
-    private reservarepository reservaRepository;
+    private ReservaRepository reservaRepository;
 
     public List<Habitacion> obtenerTodasLasHabitaciones() {
         return habitacionRepository.findAll();

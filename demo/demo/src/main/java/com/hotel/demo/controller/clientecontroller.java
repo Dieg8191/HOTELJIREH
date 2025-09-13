@@ -3,7 +3,7 @@ package com.hotel.demo.controller;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.hotel.demo.model.Cliente;
-import com.hotel.demo.repository.clienterepository;
+import com.hotel.demo.repository.ClienteRepository;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +20,9 @@ import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api/clientes")
-public class clientecontroller {
+public class ClienteController {
     @Autowired
-    private clienterepository clienteRepository;
+    private ClienteRepository clienteRepository;
 
     @PostMapping
     public ResponseEntity<Cliente> addCliente(@RequestBody Cliente cliente) {
