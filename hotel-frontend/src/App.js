@@ -23,7 +23,7 @@ function App() {
   const navigate = useNavigate(); // IMPORTANTE
 
 
-  const clic = () => {
+  const cambiarFormularioLogin = () => {
     setFormulario(!formulario);
   };
 
@@ -94,6 +94,12 @@ function App() {
               <li className="nav-item">
                 <Link className="nav-link" to="/habitaciones">HABITACIONES</Link>
               </li>
+              <li className="nav-item cursor-pointer">
+                <Link className="nav-link" to="/registrarse">Registrarse</Link>
+              </li>
+              <li className="nav-item cursor-pointer" onClick={cambiarFormularioLogin}>
+                <p className="nav-link"><b>Login</b></p>
+              </li>
             </ul>
 
             <div className="center-title mx-auto d-none d-lg-block">
@@ -113,7 +119,7 @@ function App() {
               <label type='button' className='user-icon ms-3'>🛒</label>
             </div>
 
-            <div className="user-icon ms-3" onClick={clic}>
+            <div className="user-icon ms-3" onClick={cambiarFormularioLogin}>
               👤
             </div>
           </div>
@@ -130,27 +136,29 @@ function App() {
             <button onClick={clic2}>RESERVA AHORA</button>
           </div>
 
-          {formulario && (
-            <div className="login-box">
-              <input
-                type="text"
-                placeholder="Username"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <a href="#" className="forgot">¿Olvidaste tu contraseña?</a>
-              <button className="login-btn" onClick={handleLogin}>Ingresar</button>
-            </div>
-          )}
+
 
           {reserva && <FormularioReserva />}
 
+        </div>
+      )}
+
+      {formulario && (
+        <div className="login-box">
+          <input
+            type="text"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <a href="#" className="forgot">¿Olvidaste tu contraseña?</a>
+          <button className="login-btn" onClick={handleLogin}>Ingresar</button>
         </div>
       )}
 
